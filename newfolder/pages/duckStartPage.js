@@ -6,3 +6,4 @@ exports.DuckStartPage = class DuckStartPage {
     await this.page.goto('https://start.duckduckgo.com/');
     }
 }
+//test

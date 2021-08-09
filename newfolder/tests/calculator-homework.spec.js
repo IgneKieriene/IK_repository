@@ -1,39 +1,19 @@
 const { test, expect } = require('@playwright/test');
 //const { StartPage } = require('../BasicCalculator');
 
-/*test('Test_0_Build', async ({ page }) => { //test that will not pass with that selected build
-    //const startPage1 = new StartPage (page);
+ const builds = ['0', '1', '2'];
+ builds.forEach(build => {
+ test(`Test_1_Button in ${build}`, async ({browser}) => {
+    const page = await browser.newPage();
     await page.goto('https://testsheepnz.github.io/BasicCalculator');
     const build = await page.isVisible('#selectBuild');
     expect(build).toBe(true);
-    const buildType = await page.$('#selectBuild');
-    await buildType?.selectOption('1');
-    const firstNumber = await page.isVisible('#number1Field');
-    await page.click('#number1Field');
-    await page.fill('#number1Field', '@');
-    expect(firstNumber).toBe(true);
-    const secondNumber = await page.isVisible('#number2Field');
-    await page.click('#number2Field');
-    await page.fill('#number2Field', '4');
-    expect(secondNumber).toBe(true);
-    const operationButton = await page.isVisible('#selectOperationDropdown');
-    const subtract = await page.$('#selectOperationDropdown');
-    await subtract?.selectOption('1');
-    await page.click('#calculateButton');
-    const errorMessage = await page.textContent('#errorMsgField');
-    expect (errorMessage).toBe("Number 1 is not a number");
-    
-}); */
-test.only('Test_1_Button', async ({ page }) => {
-    //const startPage1 = new StartPage (page);
-    await page.goto('https://testsheepnz.github.io/BasicCalculator');
-    const build = await page.isVisible('#selectBuild');
-    expect(build).toBe(true);
-    const buildType = await page.$('#selectBuild');
-    await buildType?.selectOption('0');
+    //const buildType = await page.$('#selectBuild');
+    await page.selectOption('#selectBuild', build);
     const calculateButton = await page.isVisible('#calculateButton');
     expect(calculateButton).toBe(true);
   });
+});
 
   test.only('Test_2_ValidNumbers', async ({ page }) => {
     await page.goto('https://testsheepnz.github.io/BasicCalculator');

@@ -4,7 +4,8 @@ const config = {
     use: {
       headless: false,
       viewport: { width: 1280, height: 720 },
-      screenshot: 'on',
+      screenshot: 'only-on-failure',
+      ignoreHTTPSErrors: true,
       launchOptions: {
               slowMo: 1000,
           },
